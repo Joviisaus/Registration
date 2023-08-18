@@ -10,6 +10,24 @@ A reappear of thr article :[Surface Registration with Eigenvalues and Eigenvecto
 
 复现基于特征值和特征向量的曲面配准方法，运用基于能量方程的优化计算方法使计算效果达到论文实现的效果。
 
+### usage
+
+```zsh 
+git clone https://github.com/VIISAUS00/Registration.git
+cd Registration
+rm -rf build
+mkdir build
+cmake ..
+make
+./Registeration
+```
+
+
+
+
+
+
+
 ### **整体代码框架**
 
 目前程序大部分编码工作已经完成，仅差二次线性规划问题还未复现。最终代码会包装成一个Surface类。对当前编码结果进行黑盒分析，使用方法仅需构造该Surface类，输入两个Mesh格式变量，系统会自动判断两流形采样点数，边界条件等是否满足配准条件，因此目前的程序已经具有较为优秀的可靠性。调用其中的Registration()方法即可实现流形配准，通过模拟计算可知，对eight.m这一相对简单的流形进行配准，在本报告所给出的实验环境下，耗时可以控制在20分钟以内，基本达到论文所要求的运行效果。
