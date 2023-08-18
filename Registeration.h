@@ -39,9 +39,6 @@ namespace MeshLib
         void Reg_view();
         std::vector<vector<double>> getI();
 		int getVertex_num();
-        void qp_lagrange(Eigen::SparseMatrix<double> H, Eigen::MatrixXd& c, Eigen::MatrixXd& A, Eigen::MatrixXd& b,
-                         Eigen::MatrixXd& x, Eigen::MatrixXd& lambda, const int& dim, const int& m);
-
         
 	protected:
 		M* m_pMesh_N;

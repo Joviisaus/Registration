@@ -432,7 +432,7 @@ void Surface<M>::Registeration(int K){
         h.setFromTriplets(tripletList.begin(), tripletList.end());
         g.setFromTriplets(tripletList_n.begin(), tripletList_n.end());
 
-        std::cout<<"computting.."<<endl;
+        //std::cout<<"computting.."<<endl;
         
         Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, g);
         
@@ -443,7 +443,7 @@ void Surface<M>::Registeration(int K){
             tripletList.emplace_back(i,i,V_Omega.coeff(i, 0));
         }
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
-        std::cout<<q*10+10<<"% finished/n"<<endl;
+        //std::cout<<q*10+10<<"% finished/n"<<endl;
         }
         
     Reg_view();
@@ -461,162 +461,12 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     double epsilon = 1e-9;
     Eigen::SparseMatrix<double> vOmega(Vertex_num+1,1);
     vOmega.setZero();
+    /*
+     TODO：
+     实现二次线性规划
+     */
     
-//    for(int i = 0; i< Vertex_num+1 ;i++) tripletList.emplace_back(i,0,0);
-//    vOmega.setFromTriplets(tripletList.begin(), tripletList.end());
-//    tripletList.clear();
-//    
-    for(int i = 0; i< k; i++){
-        for(int j = 0 ;j < Vertex_num +1; j++){
-            if(a.coeff(i, j) == 0) continue;
-            vOmega.insert(j, 0) = vOmega.coeff(j, 0) + b.coeff(i,0)/a.coeff(i, j);
-        }
-    }
-    std::vector<double> asIndex;
-    Eigen::MatrixXd Sk = Eigen::MatrixXd::Zero(Vertex_num+1, 1);
-    Eigen::MatrixXd bi_left(g.rows(), vOmega.cols());
-    bi_left = g * vOmega;
-    Eigen::MatrixXd Aee(1, 1);
-    
-    for (int i = 0; i < Vertex_num+1; i++) {
-            double bb = h.coeff(i, 0);
-            if (bi_left(i, 0) <= h.coeff(i, 0) + epsilon) {
-                Sk(i, 0) = 1;}
-            }
-
-
-    int iterTimes = 0;
-    while (iterTimes < 100) {
-        int activeSetSize = 0;
-        for (int i = 0; i < Sk.rows(); i++) {
-            if (Sk(i) == 1) {
-                activeSetSize += 1;
-            }
-        }
-        if (k != 0) {
-            Aee.resize(k + activeSetSize, a.cols());
-            Aee.block(0, 0, a.rows(), a.cols()) = a;
-            int aee_index = 0;
-            for (int i = 0; i < Vertex_num+1; i++) {
-                if (Sk(i, 0) == 1) {
-                    Aee.block(k + aee_index, 0, 1, a.cols()) = g.row(i);
-                    asIndex.push_back(i);
-                    aee_index += 1;
-                }
-            }
-        }
-        else {
-            Aee.resize(activeSetSize, g.cols());
-            int aee_index = 0;
-            for (int i = 0; i < Vertex_num+1; i++) {
-                if (Sk(i, 0) == 1) {
-                    Aee.block(aee_index, 0, 1, g.cols()) = g.row(i);
-                    asIndex.push_back(i);
-                    aee_index += 1;
-                }
-            }
-        }
-        
-        Eigen::MatrixXd d = Eigen::MatrixXd::Zero(vOmega.rows(), 1);
-        Eigen::MatrixXd lambda = Eigen::MatrixXd::Zero(Aee.rows(), 1);
-        Eigen::MatrixXd gk;
-        gk = W_N * vOmega + z;
-        Eigen::MatrixXd bee = Eigen::MatrixXd::Zero(Aee.rows(), 1);
-        
-        //qp_lagrange(W_N, gk, Aee, bee, d, lambda, d.rows(), Aee.rows());
-        
-        double d_norm = 0;
-        for (int i = 0; i < d.rows(); i++) {
-            d_norm += d(i) * d(i);
-        }
-        
-        // d的模是否=0 是 停算
-        if (d_norm < 1e-6) {
-            // 终止判断
-            double minLambda = 9999;
-            int minLambdaIndex = 0;
-            for (int i = 0; i < lambda.rows(); i++) {
-                if (lambda(i, 0) < minLambda) {
-                    minLambda = lambda(i, 0);
-                    minLambdaIndex = i;
-                }
-            }
-            if (minLambda > 0) {
-                break;
-            }
-            // 从有效集中剔除约束
-            else {
-                int removed_cons = asIndex[minLambdaIndex];
-                //int removed_cons = asIndex[minLambdaIndex - k];
-                Sk(removed_cons, 0) = 0;
-            }
-        }
-        // 否 求步长
-        else {
-            Eigen::MatrixXd ad(g.rows(), 1);
-            ad = g * d;
-            Eigen::MatrixXd ax(g.rows(), 1);
-            ax = g * vOmega;
-            std::vector<double> alphaList;
-            int min_alpha_index = 0;
-            double min_alpha = 9999;
-            std::cout<<"iterTimes --+"<<endl;
-            for (int i = 0; i < Sk.rows(); i++) {
-                if (Sk(i) == 0 && ad(i, 0) < 0) {
-                    double alpha_ = (h.coeff(i, 0) - ax(i, 0)) / ad(i, 0);
-                    if (alpha_ < min_alpha) {
-                        min_alpha = alpha_;
-                        min_alpha_index = i;
-                    }
-                    alphaList.push_back(alpha_);
-                }
-            }
-            std::cout<<min_alpha<<endl;
-            if (min_alpha > 1) {
-                vOmega = vOmega + d;
-            }
-            else {
-                vOmega = vOmega + min_alpha * d;
-                Sk(min_alpha_index) = 1;    // 将最小的alpha对应的约束加入有效集
-            }
-        }
-        
-        iterTimes += 1;
-        
-    }
-    std::cout<<iterTimes<<" while end"<<endl;
-    double num = 0;
-    for(int i = 0 ; i < Vertex_num+1; i++){
-        std::cout<<vOmega.coeff(i,0)<< " " << vOmega.cols()<<" "<<vOmega.rows()<<endl;
-        num += vOmega.coeff(i,0);
-    }
-    std::cout<<num<<endl;
-
     return vOmega;
-    
-}
-
-template<typename M>
-void Surface<M>::qp_lagrange(Eigen::SparseMatrix<double> H, Eigen::MatrixXd& c, Eigen::MatrixXd& A, Eigen::MatrixXd& b,
-                 Eigen::MatrixXd& x, Eigen::MatrixXd& lambda, const int& dim, const int& m) {
-    Eigen::MatrixXd G(dim, dim);
-    Eigen::MatrixXd B(m, dim);
-    Eigen::MatrixXd C(m, m);
-    
-    //Eigen::SparseLU<Eigen::SparseMatrix<double>> solver;
-    //solver.compute(H);
-    Eigen::MatrixXd I(H.cols(),H.rows());
-    //I.setIdentity();
-    I.setZero();
-    auto H_inv = I;
-
-    
-    G = H_inv - H_inv * A.transpose() * (A * H_inv * A.transpose()).inverse() * A * H_inv;
-    B = (A * H_inv * A.transpose()).inverse() * A * H_inv;
-    C = -1 * (A * H_inv * A.transpose()).inverse();
-    
-    x = B.transpose() * b - G * c;
-    lambda = B * c - C * b;
     
 }
 
