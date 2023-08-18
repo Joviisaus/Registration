@@ -15,8 +15,8 @@ int main(int argc, char** argv)
     CTMesh mesh_N;
     CTMesh mesh_M;
     //mesh.read_m(argv[1]);
-    mesh_N.read_m("../../Model/iso_eight.m");
-    mesh_M.read_m("../../Model/eight.m");
+    mesh_N.read_m("../Model/iso_eight.m");
+    mesh_M.read_m("../Model/eight.m");
     Surface<CTMesh> Surface(&mesh_N,&mesh_M,5);
     Surface.buildLBM_N();
     Surface.buildLBM_M();

@@ -15,14 +15,11 @@ A reappear of thr article :[Surface Registration with Eigenvalues and Eigenvecto
 ```zsh 
 git clone https://github.com/VIISAUS00/Registration.git
 cd Registration
-rm -rf build
 mkdir build
 cmake ..
 make
 ./Registeration
 ```
-
-
 
 
 
