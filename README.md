@@ -23,7 +23,7 @@ make
 
 
 
-
+![Visualization over the first non-zero eigen vector](include/LAP.png)
 
 ### **整体代码框架**
 
