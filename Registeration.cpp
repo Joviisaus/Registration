@@ -434,7 +434,8 @@ void Surface<M>::Registeration(int K){
 
         
         Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, g);
-        
+        //std::cout<<vOmega<<endl;
+
         V_Omega = V_Omega + vOmega/(K-q);
         
         tripletList.clear();
@@ -442,8 +443,9 @@ void Surface<M>::Registeration(int K){
             tripletList.emplace_back(i,i,V_Omega.coeff(i, 0));
         }
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
-
         }
+
+        std::cout<<V_Omega<<endl;
         
     Reg_view();
     
@@ -459,11 +461,66 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     
     double epsilon = 1e-9;
     Eigen::SparseMatrix<double> vOmega(Vertex_num+1,1);
+    Eigen::SparseMatrix<double> dvOmega(Vertex_num+1,1);
+    Eigen::SparseMatrix<double> WO(Vertex_num+1,1);
+    Eigen::SparseMatrix<double> WOZ(Vertex_num+1,1);
     vOmega.setZero();
+    //从初始化开始限制好av=b,
+    z = 2*z;
     /*
      TODO：
      实现二次线性规划
      */
+    for(int i = 0;i < 1000; i++)
+    {
+        //这一部分用牛顿迭代法求
+        tripletList.clear();
+        WO = W_N*vOmega;
+        WOZ = W_N*vOmega - z;
+        if(WO.norm()!=0) WO /= WO.norm();
+        if(WOZ.norm()!=0) WOZ /= WOZ.norm();
+        
+        if((W_N*vOmega - z).norm()< 0.01) break;
+        for(int j = 0; j < Vertex_num+1; j++)
+        {
+            
+            if( vOmega.coeff(j,0) == 0 || WO.coeff(j,0) == 0){
+                tripletList.emplace_back(j,0,-WOZ.coeff(j,0));
+            }else {
+                tripletList.emplace_back(j,0,-WOZ.coeff(j,0)/(WO.coeff(j,0)/vOmega.coeff(j,0)));
+            }
+
+        }
+        dvOmega.setFromTriplets(tripletList.begin(),tripletList.end());
+        
+        WO = g*(vOmega+dvOmega);
+        for(int j = 0; j < Vertex_num+1; j++)
+        {
+            if(WO.coeff(j,0)>h.coeff(j,0)) return vOmega;
+        }
+        //std::cout<<dvOmega<<endl;
+
+        vOmega += dvOmega;
+
+        //接下来的这一部分处理av = b
+        for(int j = 0;j< k;j++)
+        {
+            tripletList.clear();
+            for(int s = 0; s < Vertex_num +1; s++)
+            {
+                if(a.coeff(j,s) == 0){
+                    tripletList.emplace_back(s,0,vOmega.coeff(s,0));
+                }else{
+                    tripletList.emplace_back(s,0,(a.coeff(j,s)*vOmega.coeff(s,0)-b.coeff(j,0))/a.coeff(j,s));
+                }
+                
+            }
+            vOmega.setFromTriplets(tripletList.begin(),tripletList.end());
+
+        }
+
+
+    }
         
     return vOmega;
     
@@ -533,12 +590,12 @@ void Surface<M>::Reg_view()
     {
         i++;
         typename M::CVertex* pVertex = mv.value();
-        if(Omega.coeff(i, i) > 1.0001)
+        if(Omega.coeff(i, i) > 1.1)
         {
             pVertex->rgb()[0] = 1;
             pVertex->rgb()[1] = 0;
             pVertex->rgb()[2] = 0;
-        }else if (Omega.coeff(i, i) < 0.9999){
+        }else if (Omega.coeff(i, i) < 0.9){
             pVertex->rgb()[0] = 0;
             pVertex->rgb()[1] = 0;
             pVertex->rgb()[2] = 1;
