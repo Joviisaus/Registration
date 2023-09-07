@@ -37,6 +37,7 @@ namespace MeshLib
         void Registeration(int K);
         void _change_color();
         void Reg_view();
+        void _change();
         std::vector<vector<double>> getI();
 		int getVertex_num();
         

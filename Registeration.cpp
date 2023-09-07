@@ -261,7 +261,7 @@ void Surface<M>::EmBedding_N(){
     for(int i = 1; i<= k ;i++){
         
         for(int j = 1; j <= Vertex_num ;j++){
-            tripletList.emplace_back(j,i-1,(double)(vectors.coeff(j,i).real())/sqrt(evalues.coeff(0,i).real()));
+            tripletList.emplace_back(j,i-1,(double)(vectors.coeff(j,i).real())/(1+sqrt(evalues.coeff(0,i).real())));
             tripletList_n.emplace_back(j,i-1,(double)(vectors.coeff(j,i).real()));
         }
         tripletList_n.emplace_back(i-1,0,(double)evalues.coeff(i).real());
@@ -432,7 +432,6 @@ void Surface<M>::Registeration(int K){
         h.setFromTriplets(tripletList.begin(), tripletList.end());
         g.setFromTriplets(tripletList_n.begin(), tripletList_n.end());
 
-        //std::cout<<"computting.."<<endl;
         
         Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, g);
         
@@ -443,7 +442,7 @@ void Surface<M>::Registeration(int K){
             tripletList.emplace_back(i,i,V_Omega.coeff(i, 0));
         }
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
-        //std::cout<<q*10+10<<"% finished/n"<<endl;
+
         }
         
     Reg_view();
@@ -465,7 +464,7 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
      TODO：
      实现二次线性规划
      */
-    
+        
     return vOmega;
     
 }
@@ -489,6 +488,35 @@ void Surface<M>::_change_color()
             pVertex->rgb()[0] = 0;
             pVertex->rgb()[1] = 0;
             pVertex->rgb()[2] = 1;
+        }else{
+            pVertex->rgb()[0] = 0;
+            pVertex->rgb()[1] = 0;
+            pVertex->rgb()[2] = 0;
+        }
+    }
+}
+
+template<typename M>
+void Surface<M>::_change()
+{
+    int i = 0;
+    for (typename M::MeshVertexIterator mv(m_pMesh_N); !mv.end(); mv++)
+    {
+        i++;
+        typename M::CVertex* pVertex = mv.value();
+        if(I_N.coeff(i,1)>0 && I_N.coeff(i,2)>0)
+        {
+            pVertex->rgb()[0] = 1;
+            pVertex->rgb()[1] = 0;
+            pVertex->rgb()[2] = 0;
+        }else if (I_N.coeff(i,1)<0 && I_N.coeff(i,2)>0){
+            pVertex->rgb()[0] = 0;
+            pVertex->rgb()[1] = 0;
+            pVertex->rgb()[2] = 1;
+        }else if (I_N.coeff(i,1)<0 && I_N.coeff(i,2)<0){
+            pVertex->rgb()[0] = 0;
+            pVertex->rgb()[1] = 1;
+            pVertex->rgb()[2] = 0;
         }else{
             pVertex->rgb()[0] = 0;
             pVertex->rgb()[1] = 0;
