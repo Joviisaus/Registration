@@ -16,8 +16,10 @@ int main(int argc, char** argv)
     CTMesh mesh_M;
     //mesh.read_m(argv[1]);
     mesh_N.read_m("../../Model/eight.m");
-    mesh_M.read_obj("../../Model/eight_str.obj");
-    Surface<CTMesh> Surface(&mesh_N,&mesh_M,10);
+    //mesh_M.read_m("../../Model/eight.m");
+    mesh_M.read_obj("../../Model/eight_Reg.obj");
+    //mesh_M.read_obj("../../Model/eight_str.obj");
+    Surface<CTMesh> Surface(&mesh_N,&mesh_M,5);
     Surface.buildLBM_N();
     Surface.buildLBM_M();
     //Surface.EmBedding_N();
