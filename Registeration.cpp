@@ -13,6 +13,7 @@ Surface<M>::Surface(M* pMesh_N ,M* pMesh_M ,int k){
     m_pMesh_N = pMesh_N;
     m_pMesh_M = pMesh_M;
     Vertex_num = (int)m_pMesh_M->numVertices();
+    FirstRegistered = false;
     
     for (typename M::MeshFaceIterator mv(m_pMesh_N); !mv.end(); mv++)
     {
@@ -254,14 +255,21 @@ void Surface<M>::EmBedding_N(){
         
     int s = 0;
     for(;evalues.coeff(k-s,0).real()<0.0001 && s < k;s++){}
+    if(FirstRegistered){
+        s = zeros;
+    }else{
+        zeros = s;
+        FirstRegistered = true;
+    }
 
     I_N.resize(Vertex_num+1, k+1-s);
     f_N.resize(Vertex_num+1, k+1-s);
+    
 
     for(int i = 0; i< k+1-s ;i++){
         
         for(int j = 0; j <= Vertex_num ;j++){
-            tripletList.emplace_back(j,i,(double)(vectors.coeff(j,i).real())/(1+sqrt(evalues.coeff(0,i).real())));
+            tripletList.emplace_back(j,i,(double)(vectors.coeff(j,i).real())/sqrt(evalues.coeff(i,0).real()));
             tripletList_n.emplace_back(j,i,(double)(vectors.coeff(j,i).real()));
         }
         tripletList_e.emplace_back(i,0,(double)evalues.coeff(i,0).real());
@@ -331,7 +339,7 @@ void Surface<M>::EmBedding_M(){
     
     for(int i = 0; i< k+1-s ;i++){
         for(int j = 0; j <= Vertex_num ;j++){
-            tripletList.emplace_back(j,i,(double)(vectors.coeff(j,i).real())/sqrt(evalues.coeff(0,i).real()));
+            tripletList.emplace_back(j,i,(double)(vectors.coeff(j,i).real())/sqrt(evalues.coeff(i,0).real()));
             tripletList_n.emplace_back(j,i,(double)(vectors.coeff(j,i).real()));
         }
         tripletList_e.emplace_back(i,0,(double)evalues.coeff(i,0).real());
@@ -389,13 +397,14 @@ void Surface<M>::Registeration(int K){
         Eigen::SparseMatrix<double> b;
         a.resize(k,Vertex_num+1);
         b.resize(k, 1);
-        std::cout<<lambda_N<<endl;
-        std::cout<<lambda_M<<endl;
+        //std::cout<<lambda_N<<endl;
+        //std::cout<<lambda_M<<endl;
+        std::cout<<lambda_M-lambda_N<<endl;
 
         for(int i = 0; i < k;i++){
             for(int j = 0; j< Vertex_num+1; j++){
-                //tripletList.emplace_back(i,j,f_N.coeff(j, i)*f_N.coeff(j, i)/S_N.coeff(j, j));
-                tripletList.emplace_back(i,j,f_N.coeff(j, i)/S_N.coeff(j, j));
+                tripletList.emplace_back(i,j,f_N.coeff(j, i)*f_N.coeff(j, i)/S_N.coeff(j, j));
+                //tripletList.emplace_back(i,j,f_N.coeff(j, i)/S_N.coeff(j, j));
             }
             tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/(q*lambda_N.coeff(i, 0)+(K-q)*lambda_M.coeff(i, 0)));
         }
@@ -439,9 +448,9 @@ void Surface<M>::Registeration(int K){
         
         h.setFromTriplets(tripletList.begin(), tripletList.end());
         g.setFromTriplets(tripletList_n.begin(), tripletList_n.end());
-
+        
         Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, g);
-        //std::cout<<vOmega<<endl;
+        std::cout<<vOmega<<endl;
 
         V_Omega = V_Omega + vOmega/(K-q);
         //std::cout<<V_Omega<<endl;
@@ -466,7 +475,8 @@ template<typename M>
 Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> g){
     
     std::vector<Eigen::Triplet<double>> tripletList;
-    
+    int num;
+    vector<int> filter(Vertex_num+1,0);
     double epsilon = 1e-9;
     Eigen::SparseMatrix<double> vOmega(Vertex_num+1,1);
     Eigen::SparseMatrix<double> dvOmega(Vertex_num+1,1);
@@ -486,6 +496,27 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
      TODO：
      实现二次线性规划
      */
+    for(int s = 0; s < Vertex_num + 1;s++)
+    {
+        int count = 0;
+        for(int t = 0; t < k;t++)
+        {
+            if(abs(I_N.coeff(s,t)-I_M.coeff(s, t))> 0.1) count++;
+            if(count >= 2) {
+                filter[s] = 1;
+                break;
+            }
+        }
+        
+    }
+
+    for(int j = 0;j < k;j++)
+    {
+        num = 0;
+        for(int s = 0; s<Vertex_num +1;s++){
+            if(abs(I_N.coeff(s,j)-I_M.coeff(s, j))> 0.1 && filter[s] == 0) num++;
+        }
+        
     
 
     for(int i = 0;i < 10; i++)
@@ -493,6 +524,7 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
         //if((W_N*vOmega - z).norm()< epsilon) break;
         //std::cout<<"computing"<<endl;
         //这一部分用牛顿迭代法求
+        
         
         tripletList.clear();
 //        WO = W_N*vOmega;
@@ -525,7 +557,8 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
 //            }
 //
 //        }
-        dvOmega.setFromTriplets(tripletList.begin(),tripletList.end());
+       
+        //dvOmega.setFromTriplets(tripletList.begin(),tripletList.end());
         
         
 //        WO = g*(vOmega+dvOmega);
@@ -534,36 +567,39 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
 //            if(WO.coeff(j,0)>h.coeff(j,0)) return vOmega;
 //        }
 
-        vOmega += 0.01*dvOmega;
-        dvOmega.setZero();
+        //vOmega += 0.01*dvOmega;
+        //dvOmega.setZero();
 
         //接下来的这一部分处理av = b
-        for(int j = 0;j < k;j++)
-        {
-            tripletList.clear();
+
+        
             for(int s = 0; s < Vertex_num +1; s++)
             {
-                if(abs(a.coeff(j,s)) < 0.00001){
+                if(abs(a.coeff(j,s)) < epsilon){
                     //tripletList.emplace_back(s,0,vOmega.coeff(s,0));
                     //tripletList.emplace_back(s,0,0);
                     continue;
                 }else{
                     //tripletList.emplace_back(s,0,-(a.coeff(j,s)*vOmega.coeff(s,0)-b.coeff(j,0))/a.coeff(j,s));
-                    tripletList.emplace_back(s,0,b.coeff(j,0)/a.coeff(j, s)-V_Omega.coeff(s, 0));
-                    //std::cout<<b.coeff(j,0)/a.coeff(j, s)<<endl;
+                    
+                    //加一点自己的想法,只变动部分点来构建方程。
+                    
+                    if(abs(I_N.coeff(s,j)-I_M.coeff(s, j))> 0.1 && filter[s] == 0) {tripletList.emplace_back(s,0,b.coeff(j,0)/a.coeff(j, s)/num -vOmega.coeff(s, 0));
+                        //std::cout<<b.coeff(j,0)<<" "<<a.coeff(j, s)<<" "<<num<<endl;
+                        //std::cout<<b.coeff(j,0)/a.coeff(j, s)/num<<endl;
+                    }
                 }
                 
             }
             dvOmega.setFromTriplets(tripletList.begin(),tripletList.end());
+                        
             
-            
-            
-            vOmega += 0.01*dvOmega;
-            //std::cout<<vOmega<<endl;
+            vOmega += dvOmega;
+            //std::cout<<dvOmega<<endl;
             dvOmega.setZero();
         }
     }
-    std::cout<<vOmega<<endl;
+    //std::cout<<vOmega<<endl;
         
     return vOmega;
     

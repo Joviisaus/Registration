@@ -45,6 +45,8 @@ namespace MeshLib
 		M* m_pMesh_N;
         M* m_pMesh_M;
         int k;
+        int zeros;
+        bool FirstRegistered;
         Eigen::SparseMatrix<double> L_N;
         Eigen::SparseMatrix<double> W_N;
         Eigen::SparseMatrix<double> S_N;
