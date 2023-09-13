@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/jingouyang/Personal/Courseware/曲面配准/zzzlib/Registeration/CGetpoint.cpp" "CMakeFiles/Registeration.dir/CGetpoint.cpp.o" "gcc" "CMakeFiles/Registeration.dir/CGetpoint.cpp.o.d"
-  "/Users/jingouyang/Personal/Courseware/曲面配准/zzzlib/Registeration/Registeration.cpp" "CMakeFiles/Registeration.dir/Registeration.cpp.o" "gcc" "CMakeFiles/Registeration.dir/Registeration.cpp.o.d"
-  "/Users/jingouyang/Personal/Courseware/曲面配准/zzzlib/Registeration/main.cpp" "CMakeFiles/Registeration.dir/main.cpp.o" "gcc" "CMakeFiles/Registeration.dir/main.cpp.o.d"
+  "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp" "CMakeFiles/Registeration.dir/CGetpoint.cpp.o" "gcc" "CMakeFiles/Registeration.dir/CGetpoint.cpp.o.d"
+  "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp" "CMakeFiles/Registeration.dir/Registeration.cpp.o" "gcc" "CMakeFiles/Registeration.dir/Registeration.cpp.o.d"
+  "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp" "CMakeFiles/Registeration.dir/main.cpp.o" "gcc" "CMakeFiles/Registeration.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
