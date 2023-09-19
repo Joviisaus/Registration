@@ -473,13 +473,10 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
 
     Eigen::SparseMatrix<double> vOmega(Vertex_num,1);
     
-    OsqpEigen::Solver solver;
 
     Eigen::VectorXd z_crowd(Vertex_num);
     Eigen::VectorXd b_crowd(k);
     
-
-    z_crowd.reverse();
     for(int i = 0; i < Vertex_num ;i++)
     {
         z_crowd(i,0) = z.coeff(i,0);
@@ -489,48 +486,10 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
         b_crowd(i,0) = b.coeff(i,0);
     }
 
-    solver.settings()->setVerbosity(false);
-    solver.settings()->setWarmStart(true);
-  
-    solver.data()->setNumberOfVariables(Vertex_num);
-    solver.data()->setNumberOfConstraints(k);
-    
-    //std::cout<<W_N<<endl;
-    //std::cout<<z_crowd<<endl;
-    //std::cout<<a<<endl;
-    //std::cout<<b_crowd<<endl;
-
-    
-    if (!solver.data()->setHessianMatrix(W_N))
-    {
-        std::cout<<"error in QPsolver"<<endl;
-        return vOmega; 
-    }
-    if (!solver.data()->setGradient(z_crowd))
-    {
-        std::cout<<"error in QPsolver"<<endl;
-        return vOmega; 
-    }
-    if (!solver.data()->setLinearConstraintsMatrix(a))
-    {
-        std::cout<<"error in QPsolver"<<endl;
-        return vOmega; 
-    }
-    if (!solver.data()->setLowerBound(b_crowd))
-    {
-        std::cout<<"error in QPsolver"<<endl;
-        return vOmega; 
-    }
-    if (!solver.data()->setUpperBound(b_crowd))
-    {
-        std::cout<<"error in QPsolver"<<endl;
-        return vOmega; 
-    }
     
     
     Eigen::VectorXd QPSolution;
-    QPSolution = solver.getSolution();
-    std::cout<<QPSolution<<endl;
+
     for(int i = 0 ; i < Vertex_num; i ++){
         tripletList.emplace_back(i,0,QPSolution(i,0));
     }
