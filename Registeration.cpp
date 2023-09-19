@@ -471,6 +471,8 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     
     std::vector<Eigen::Triplet<double>> tripletList;
 
+    double eps_abs = 1e-9;
+
     Eigen::SparseMatrix<double> vOmega(Vertex_num,1);
     
 
@@ -486,7 +488,22 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
         b_crowd(i,0) = b.coeff(i,0);
     }
 
-    
+    dense::QP<double> qp(Vertex_num, 0, k);
+
+    qp.settings.eps_abs = eps_abs;
+    qp.settings.initial_guess = InitialGuessStatus::NO_INITIAL_GUESS;
+    qp.settings.verbose = true;
+
+    qp.init(W_N, z, nullopt, nullopt, a, b, b);
+
+    qp.solve();
+
+    std::cout << "primal residual: " << qp.results.info.pri_res << std::endl;
+    std::cout << "dual residual: " << qp.results.info.dua_res << std::endl;
+    std::cout << "total number of iteration: " << qp.results.info.iter
+            << std::endl;
+    std::cout << "setup timing " << qp.results.info.setup_time << " solve time "
+            << qp.results.info.solve_time << std::endl;
     
     Eigen::VectorXd QPSolution;
 

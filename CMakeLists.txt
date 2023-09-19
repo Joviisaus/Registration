@@ -14,6 +14,7 @@ include_directories("basic_opengl")
 include_directories("TMeshlib")
 include_directories("freeglut")
 
-include_directories("/usr/local/include/")
 
 add_executable(Registeration main.cpp Getpoint.h CGetPoint.h MeshBuilder.h Tool.h ToolMesh.h CGetpoint.cpp Registeration.h Registeration.cpp)
+
+link_directories(Registeration proxsuite)
