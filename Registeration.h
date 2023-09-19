@@ -68,13 +68,12 @@ namespace MeshLib
         Eigen::SparseMatrix<double> V_Omega;
         
         Eigen::SparseMatrix<double> compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> g);
-
+ 
+        
         int Vertex_num;
         double SN;
         
 	};
-
-    
 
 
 }
