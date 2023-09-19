@@ -10,6 +10,7 @@
 #include<Spectra/GenEigsSolver.h>
 #include<Spectra/MatOp/SparseGenMatProd.h>
 #include<Eigen/Eigen>
+#include "OsqpEigen/OsqpEigen.h"
 
 
 #include "ToolMesh.h"
@@ -45,6 +46,8 @@ namespace MeshLib
 		M* m_pMesh_N;
         M* m_pMesh_M;
         int k;
+        int zeros;
+        bool FirstRegistered;
         Eigen::SparseMatrix<double> L_N;
         Eigen::SparseMatrix<double> W_N;
         Eigen::SparseMatrix<double> S_N;
@@ -65,13 +68,12 @@ namespace MeshLib
         Eigen::SparseMatrix<double> V_Omega;
         
         Eigen::SparseMatrix<double> compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> g);
-
+ 
+        
         int Vertex_num;
         double SN;
         
 	};
-
-    
 
 
 }

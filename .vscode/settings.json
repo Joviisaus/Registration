@@ -69,6 +69,7 @@
         "vector": "cpp",
         "algorithm": "cpp",
         "eigen": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "alignedvector3": "cpp"
     }
 }
