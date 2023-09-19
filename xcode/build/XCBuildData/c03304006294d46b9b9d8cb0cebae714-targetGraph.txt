@@ -1,0 +1,7 @@
+Target dependency graph (3 targets)
+ZERO_CHECK in Registeration, no dependencies
+Registeration in Registeration, depends on:
+ZERO_CHECK in Registeration (explicit)
+ALL_BUILD in Registeration, depends on:
+Registeration in Registeration (explicit)
+ZERO_CHECK in Registeration (explicit)

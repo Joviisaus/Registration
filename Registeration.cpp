@@ -399,7 +399,7 @@ void Surface<M>::Registeration(int K){
         b.resize(k, 1);
         //std::cout<<lambda_N<<endl;
         //std::cout<<lambda_M<<endl;
-        std::cout<<lambda_M-lambda_N<<endl;
+        //std::cout<<lambda_M-lambda_N<<endl;
 
         for(int i = 0; i < k;i++){
             for(int j = 0; j< Vertex_num+1; j++){
@@ -431,7 +431,7 @@ void Surface<M>::Registeration(int K){
         E_f.setFromTriplets(tripletList.begin(), tripletList.end());
         
         Eigen::SparseMatrix<double> z =  W_N*V_Omega;
-        //z += E_f;
+        z += E_f;
         
         tripletList.clear();
         tripletList_n.clear();
@@ -475,131 +475,62 @@ template<typename M>
 Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> g){
     
     std::vector<Eigen::Triplet<double>> tripletList;
-    int num;
-    vector<int> filter(Vertex_num+1,0);
-    double epsilon = 1e-9;
+
+    Eigen::VectorXd vO(Vertex_num + 1);
     Eigen::SparseMatrix<double> vOmega(Vertex_num+1,1);
-    Eigen::SparseMatrix<double> dvOmega(Vertex_num+1,1);
-    Eigen::SparseMatrix<double> WO(Vertex_num+1,1);
-    Eigen::SparseMatrix<double> WOZ(Vertex_num+1,1);
-    vOmega.setZero();
     
-    //测试一下vOmega初始值设成非0能不能收敛
-//    for(int j = 0; j < Vertex_num+1; j++)
-//    {
-//        tripletList.emplace_back(j,0,0.2);
-//    }
-//    vOmega.setFromTriplets(tripletList.begin(), tripletList.end());
-    //从初始化开始限制好av=b,
+    OsqpEigen::Solver solver;
 
-    /*
-     TODO：
-     实现二次线性规划
-     */
-    for(int s = 0; s < Vertex_num + 1;s++)
+    Eigen::VectorXd z_crowd(Vertex_num+1,1);
+    Eigen::VectorXd b_crowd(k,1);
+
+    for(int i = 0; i < Vertex_num+1 ;i++)
     {
-        int count = 0;
-        for(int t = 0; t < k;t++)
-        {
-            if(abs(I_N.coeff(s,t)-I_M.coeff(s, t))> 0.1) count++;
-            if(count >= 2) {
-                filter[s] = 1;
-                break;
-            }
-        }
-        
+        z_crowd(i,0) = z.coeff(i,0);
+    }
+    for(int i = 0;i < k; i++)
+    {
+        b_crowd(i,0) = b.coeff(i,0);
     }
 
-    for(int j = 0;j < k;j++)
+    solver.settings()->setVerbosity(false);
+    solver.settings()->setWarmStart(true);
+  
+    solver.data()->setNumberOfVariables(Vertex_num +1);
+    solver.data()->setNumberOfConstraints(k);
+    if (!solver.data()->setHessianMatrix(W_N))
     {
-        num = 0;
-        for(int s = 0; s<Vertex_num +1;s++){
-            if(abs(I_N.coeff(s,j)-I_M.coeff(s, j))> 0.1 && filter[s] == 0) num++;
-        }
-        
-    
-
-    for(int i = 0;i < 10; i++)
-    {
-        //if((W_N*vOmega - z).norm()< epsilon) break;
-        //std::cout<<"computing"<<endl;
-        //这一部分用牛顿迭代法求
-        
-        
-        tripletList.clear();
-//        WO = W_N*vOmega;
-//        WOZ = W_N*vOmega - z;
-//        if(WO.norm()!=0) WO /= WO.norm();
-//        if(WOZ.norm()!=0) WOZ /= WOZ.norm();
-//
-        for(int j = 0; j < Vertex_num +1; j++)
-        {
-            tripletList.clear();
-            for(int s = 0; s <Vertex_num +1; s++)
-            {
-                if(W_N.coeff(j, s) < 0.00001) continue;
-                tripletList.emplace_back(s,0,-z.coeff(j, 0)/W_N.coeff(j, s)-vOmega.coeff(s, 0));
-            }
-            dvOmega.setFromTriplets(tripletList.begin(), tripletList.end());
-            vOmega += 0.01*dvOmega;
-            dvOmega.setZero();
-        }
-        
-//        for(int j = 0; j < Vertex_num+1; j++)
-//        {
-//
-//            if( vOmega.coeff(j,0) == 0 || WO.coeff(j,0) == 0){
-//                if(WOZ.coeff(j,0)>=0) tripletList.emplace_back(j,0,0);
-//                else tripletList.emplace_back(j,0,0);
-//
-//            }else {
-//                tripletList.emplace_back(j,0,-WOZ.coeff(j,0)/(WO.coeff(j,0)/vOmega.coeff(j,0)));
-//            }
-//
-//        }
-       
-        //dvOmega.setFromTriplets(tripletList.begin(),tripletList.end());
-        
-        
-//        WO = g*(vOmega+dvOmega);
-//        for(int j = 0; j < Vertex_num+1; j++)
-//        {
-//            if(WO.coeff(j,0)>h.coeff(j,0)) return vOmega;
-//        }
-
-        //vOmega += 0.01*dvOmega;
-        //dvOmega.setZero();
-
-        //接下来的这一部分处理av = b
-
-        
-            for(int s = 0; s < Vertex_num +1; s++)
-            {
-                if(abs(a.coeff(j,s)) < epsilon){
-                    //tripletList.emplace_back(s,0,vOmega.coeff(s,0));
-                    //tripletList.emplace_back(s,0,0);
-                    continue;
-                }else{
-                    //tripletList.emplace_back(s,0,-(a.coeff(j,s)*vOmega.coeff(s,0)-b.coeff(j,0))/a.coeff(j,s));
-                    
-                    //加一点自己的想法,只变动部分点来构建方程。
-                    
-                    if(abs(I_N.coeff(s,j)-I_M.coeff(s, j))> 0.1 && filter[s] == 0) {tripletList.emplace_back(s,0,b.coeff(j,0)/a.coeff(j, s)/num -vOmega.coeff(s, 0));
-                        //std::cout<<b.coeff(j,0)<<" "<<a.coeff(j, s)<<" "<<num<<endl;
-                        //std::cout<<b.coeff(j,0)/a.coeff(j, s)/num<<endl;
-                    }
-                }
-                
-            }
-            dvOmega.setFromTriplets(tripletList.begin(),tripletList.end());
-                        
-            
-            vOmega += dvOmega;
-            //std::cout<<dvOmega<<endl;
-            dvOmega.setZero();
-        }
+        std::cout<<"error in QPsolver"<<endl;
+        return vOmega; 
     }
-    //std::cout<<vOmega<<endl;
+    if (!solver.data()->setGradient(z_crowd))
+    {
+        std::cout<<"error in QPsolver"<<endl;
+        return vOmega; 
+    }
+    if (!solver.data()->setLinearConstraintsMatrix(a))
+    {
+        std::cout<<"error in QPsolver"<<endl;
+        return vOmega; 
+    }
+    if (!solver.data()->setLowerBound(b_crowd))
+    {
+        std::cout<<"error in QPsolver"<<endl;
+        return vOmega; 
+    }
+    if (!solver.data()->setUpperBound(b_crowd))
+    {
+        std::cout<<"error in QPsolver"<<endl;
+        return vOmega; 
+    }
+    
+    
+    Eigen::VectorXd QPSolution = solver.getSolution();
+    //std::cout<<QPSolution<<endl;
+    for(int i = 0 ; i < Vertex_num + 1 ; i ++){
+        tripletList.emplace_back(i,0,QPSolution(i,0));
+    }
+    vOmega.setFromTriplets(tripletList.begin(), tripletList.end());
         
     return vOmega;
     

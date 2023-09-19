@@ -10,6 +10,7 @@
 #include<Spectra/GenEigsSolver.h>
 #include<Spectra/MatOp/SparseGenMatProd.h>
 #include<Eigen/Eigen>
+#include "OsqpEigen/OsqpEigen.h"
 
 
 #include "ToolMesh.h"

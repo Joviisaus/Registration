@@ -73,43 +73,43 @@ CMakeFiles/Registeration.dir/main.cpp.o: CMakeFiles/Registeration.dir/flags.make
 CMakeFiles/Registeration.dir/main.cpp.o: /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp
 CMakeFiles/Registeration.dir/main.cpp.o: CMakeFiles/Registeration.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Registeration.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Registeration.dir/main.cpp.o -MF CMakeFiles/Registeration.dir/main.cpp.o.d -o CMakeFiles/Registeration.dir/main.cpp.o -c /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Registeration.dir/main.cpp.o -MF CMakeFiles/Registeration.dir/main.cpp.o.d -o CMakeFiles/Registeration.dir/main.cpp.o -c /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp
 
 CMakeFiles/Registeration.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Registeration.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp > CMakeFiles/Registeration.dir/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp > CMakeFiles/Registeration.dir/main.cpp.i
 
 CMakeFiles/Registeration.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Registeration.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp -o CMakeFiles/Registeration.dir/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp -o CMakeFiles/Registeration.dir/main.cpp.s
 
 CMakeFiles/Registeration.dir/CGetpoint.cpp.o: CMakeFiles/Registeration.dir/flags.make
 CMakeFiles/Registeration.dir/CGetpoint.cpp.o: /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp
 CMakeFiles/Registeration.dir/CGetpoint.cpp.o: CMakeFiles/Registeration.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Registeration.dir/CGetpoint.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Registeration.dir/CGetpoint.cpp.o -MF CMakeFiles/Registeration.dir/CGetpoint.cpp.o.d -o CMakeFiles/Registeration.dir/CGetpoint.cpp.o -c /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Registeration.dir/CGetpoint.cpp.o -MF CMakeFiles/Registeration.dir/CGetpoint.cpp.o.d -o CMakeFiles/Registeration.dir/CGetpoint.cpp.o -c /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp
 
 CMakeFiles/Registeration.dir/CGetpoint.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Registeration.dir/CGetpoint.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp > CMakeFiles/Registeration.dir/CGetpoint.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp > CMakeFiles/Registeration.dir/CGetpoint.cpp.i
 
 CMakeFiles/Registeration.dir/CGetpoint.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Registeration.dir/CGetpoint.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp -o CMakeFiles/Registeration.dir/CGetpoint.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp -o CMakeFiles/Registeration.dir/CGetpoint.cpp.s
 
 CMakeFiles/Registeration.dir/Registeration.cpp.o: CMakeFiles/Registeration.dir/flags.make
 CMakeFiles/Registeration.dir/Registeration.cpp.o: /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp
 CMakeFiles/Registeration.dir/Registeration.cpp.o: CMakeFiles/Registeration.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Registeration.dir/Registeration.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Registeration.dir/Registeration.cpp.o -MF CMakeFiles/Registeration.dir/Registeration.cpp.o.d -o CMakeFiles/Registeration.dir/Registeration.cpp.o -c /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Registeration.dir/Registeration.cpp.o -MF CMakeFiles/Registeration.dir/Registeration.cpp.o.d -o CMakeFiles/Registeration.dir/Registeration.cpp.o -c /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp
 
 CMakeFiles/Registeration.dir/Registeration.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Registeration.dir/Registeration.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp > CMakeFiles/Registeration.dir/Registeration.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp > CMakeFiles/Registeration.dir/Registeration.cpp.i
 
 CMakeFiles/Registeration.dir/Registeration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Registeration.dir/Registeration.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp -o CMakeFiles/Registeration.dir/Registeration.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp -o CMakeFiles/Registeration.dir/Registeration.cpp.s
 
 # Object files for target Registeration
 Registeration_OBJECTS = \
@@ -124,6 +124,8 @@ Registeration: CMakeFiles/Registeration.dir/main.cpp.o
 Registeration: CMakeFiles/Registeration.dir/CGetpoint.cpp.o
 Registeration: CMakeFiles/Registeration.dir/Registeration.cpp.o
 Registeration: CMakeFiles/Registeration.dir/build.make
+Registeration: /opt/homebrew/anaconda3/lib/libOsqpEigen.0.8.0.dylib
+Registeration: /opt/homebrew/anaconda3/lib/libosqp.dylib
 Registeration: CMakeFiles/Registeration.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Registeration"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Registeration.dir/link.txt --verbose=$(VERBOSE)
