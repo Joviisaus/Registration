@@ -494,7 +494,7 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
         b_crowd(i,0) = b.coeff(i,0);
     }
 
-    sparse::QP<double,int> qp(Vertex_num, 0, k);
+    sparse::QP<double,int> qp(Vertex_num, k, Vertex_num);
 
     qp.settings.eps_abs = eps_abs;
     qp.settings.initial_guess = InitialGuessStatus::NO_INITIAL_GUESS;

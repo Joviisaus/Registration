@@ -1,0 +1,45 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "5eb0b66d00506f52673aee96759184bd6c412a42d7205e90bf230e23d688c1ea"
+    }
+  ],
+  "containerPath" : "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/jingouyang/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/jingouyang/Library/Developer/Xcode/DerivedData/Registeration-fzcmduwqbxcabyehwqwqhcoitiyg/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/jingouyang/Library/Developer/Xcode/DerivedData/Registeration-fzcmduwqbxcabyehwqwqhcoitiyg/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
