@@ -1,0 +1,767 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		B3257405369C4E67BDCCC26D /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 9F16A8B5B6C74A8DAEA790E5 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				542DD4DC4BB3CEAB650A3728 /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				436D153579334B4CA62E9092 /* PBXTargetDependency */,
+				11490269F30E4F5DB64D1121 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		B5C3CB1FAD404D8C91556A2E /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 414E6977F40E4FE698883587 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				3E9B2E0C9F3ADD75ACE0106B /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		644ABD6DE4E94CC58AF41E42 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp */ = {isa = PBXBuildFile; fileRef = 48DC530BB23F46BBB40F4262 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp */; };
+		6BECDEA455EC43E39C4A3F55 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 78E975A3B2434DF8A12ED6F7 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeLists.txt */; };
+		74D2608F5A324C4C9E7CEAAE /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp */ = {isa = PBXBuildFile; fileRef = 24BA4014F87348D899051F51 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp */; };
+		868C7EDDA962445E899FEBA0 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Tool.h */ = {isa = PBXBuildFile; fileRef = D2C02E53FD61424CBB2795F3 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Tool.h */; };
+		8787F07DC8C949BEBC465CF3 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetPoint.h */ = {isa = PBXBuildFile; fileRef = A431344506914EAC82FD6383 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetPoint.h */; };
+		87E1767E24FE484A981FC02C /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp */ = {isa = PBXBuildFile; fileRef = 3C6BD444226B43E3B9604789 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp */; };
+		8DAECE4DFC234AB98C669CCC /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/MeshBuilder.h */ = {isa = PBXBuildFile; fileRef = 949D75081FC54B82B0D00BD6 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/MeshBuilder.h */; };
+		B755DA85AEA84004BD000554 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/ToolMesh.h */ = {isa = PBXBuildFile; fileRef = 96A773E3CA234DF39B823B22 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/ToolMesh.h */; };
+		D7432EB7D03C4533B22273DA /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.h */ = {isa = PBXBuildFile; fileRef = 48FB12AD2AE74011851D21C2 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.h */; };
+		F2B9E255AF4E47428E49CECA /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Getpoint.h */ = {isa = PBXBuildFile; fileRef = 1F6A556B2B9C46F4AD4E32D7 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Getpoint.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		1F577D03FDCD4EC1A98DFD7C /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		7C82E0BA59AB46989AA66C2B /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		8BB4C83C4ECB447F8D202518 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		BA4FA1A36BE9421E847F80AF /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		50CFE0C631084649A3A95414 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE75C818B1824B43A192285E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5C3CB1FAD404D8C91556A2E;
+			remoteInfo = ZERO_CHECK;
+		};
+		75F6995B9C4A49AB998B02AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE75C818B1824B43A192285E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5C3CB1FAD404D8C91556A2E;
+			remoteInfo = ZERO_CHECK;
+		};
+		9321716ECAE14AE6B926C587 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE75C818B1824B43A192285E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 529CC62344E44E51A58614B0;
+			remoteInfo = Registeration;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F6A556B2B9C46F4AD4E32D7 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Getpoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Getpoint.h; path = Getpoint.h; sourceTree = SOURCE_ROOT; };
+		1FC6829F345F46AA8BAB0047 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		24BA4014F87348D899051F51 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		3C6BD444226B43E3B9604789 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CGetpoint.cpp; path = CGetpoint.cpp; sourceTree = SOURCE_ROOT; };
+		48DC530BB23F46BBB40F4262 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Registeration.cpp; path = Registeration.cpp; sourceTree = SOURCE_ROOT; };
+		48FB12AD2AE74011851D21C2 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Registeration.h; path = Registeration.h; sourceTree = SOURCE_ROOT; };
+		78E975A3B2434DF8A12ED6F7 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		949D75081FC54B82B0D00BD6 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/MeshBuilder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MeshBuilder.h; path = MeshBuilder.h; sourceTree = SOURCE_ROOT; };
+		96A773E3CA234DF39B823B22 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/ToolMesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ToolMesh.h; path = ToolMesh.h; sourceTree = SOURCE_ROOT; };
+		A431344506914EAC82FD6383 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetPoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = CGetPoint.h; path = CGetPoint.h; sourceTree = SOURCE_ROOT; };
+		AF006438D4F6400BB93664CE /* Registeration */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Registeration; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2C02E53FD61424CBB2795F3 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Tool.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Tool.h; path = Tool.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED334920745045D49434A6DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A036A218ABC4B8C8A1DB41B = {
+			isa = PBXGroup;
+			children = (
+				3AC5C552003C4E3CAA70C42F /* Registeration */,
+				D8F353DF4C084BEE8A956300 /* ALL_BUILD */,
+				A6759DC563EB4FA7A79AB24A /* Products */,
+				57CC6DAFEC5C43348AC943BF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3AC5C552003C4E3CAA70C42F /* Registeration */ = {
+			isa = PBXGroup;
+			children = (
+				B0C76B1DA111466DB75311B8 /* Source Files */,
+				6BA6332E479D4080953B99BB /* Header Files */,
+				78E975A3B2434DF8A12ED6F7 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeLists.txt */,
+			);
+			name = Registeration;
+			sourceTree = "<group>";
+		};
+		57CC6DAFEC5C43348AC943BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BA6332E479D4080953B99BB /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				A431344506914EAC82FD6383 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetPoint.h */,
+				1F6A556B2B9C46F4AD4E32D7 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Getpoint.h */,
+				949D75081FC54B82B0D00BD6 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/MeshBuilder.h */,
+				48FB12AD2AE74011851D21C2 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.h */,
+				D2C02E53FD61424CBB2795F3 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Tool.h */,
+				96A773E3CA234DF39B823B22 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/ToolMesh.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		A6759DC563EB4FA7A79AB24A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF006438D4F6400BB93664CE /* Registeration */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE2529204032480F860AF268 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		B0C76B1DA111466DB75311B8 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C6BD444226B43E3B9604789 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp */,
+				48DC530BB23F46BBB40F4262 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp */,
+				24BA4014F87348D899051F51 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		D8F353DF4C084BEE8A956300 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				AE2529204032480F860AF268 /* CMake Rules */,
+				1FC6829F345F46AA8BAB0047 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		529CC62344E44E51A58614B0 /* Registeration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDD5080156E3432DAAF90C25 /* Build configuration list for PBXNativeTarget "Registeration" */;
+			buildPhases = (
+				A189BFDAFADB4143ABC7A7EF /* Sources */,
+				ED334920745045D49434A6DA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04CCE6A0972747AC92D6F3DE /* PBXTargetDependency */,
+			);
+			name = Registeration;
+			productName = Registeration;
+			productReference = AF006438D4F6400BB93664CE /* Registeration */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE75C818B1824B43A192285E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1420;
+			};
+			buildConfigurationList = 3C2908D2C9CC44C3B4F9570F /* Build configuration list for PBXProject "Registeration" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				8BB4C83C4ECB447F8D202518 /* Debug */,
+				1F577D03FDCD4EC1A98DFD7C /* Release */,
+				7C82E0BA59AB46989AA66C2B /* MinSizeRel */,
+				BA4FA1A36BE9421E847F80AF /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 1A036A218ABC4B8C8A1DB41B;
+			projectDirPath = .;
+			projectRoot = "";
+			targets = (
+				B3257405369C4E67BDCCC26D /* ALL_BUILD */,
+				529CC62344E44E51A58614B0 /* Registeration */,
+				B5C3CB1FAD404D8C91556A2E /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C0110FC8322DE7E50886E21 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		3E9B2E0C9F3ADD75ACE0106B /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeFiles/ZERO_CHECK			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  make -f /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  make -f /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  make -f /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  make -f /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeScripts/ReRunCMake.make
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		542DD4DC4BB3CEAB650A3728 /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeFiles/ALL_BUILD			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration
+  echo Build\\ all\\ projects
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		9B50530E35CC49C82C2FACCF = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A189BFDAFADB4143ABC7A7EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E1767E24FE484A981FC02C /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CGetpoint.cpp */,
+				644ABD6DE4E94CC58AF41E42 /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Registeration.cpp */,
+				74D2608F5A324C4C9E7CEAAE /* /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/main.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04CCE6A0972747AC92D6F3DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5C3CB1FAD404D8C91556A2E /* ZERO_CHECK */;
+			targetProxy = 50CFE0C631084649A3A95414 /* PBXContainerItemProxy */;
+		};
+		11490269F30E4F5DB64D1121 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5C3CB1FAD404D8C91556A2E /* ZERO_CHECK */;
+			targetProxy = 75F6995B9C4A49AB998B02AC /* PBXContainerItemProxy */;
+		};
+		436D153579334B4CA62E9092 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 529CC62344E44E51A58614B0 /* Registeration */;
+			targetProxy = 9321716ECAE14AE6B926C587 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		22C1CAD49078468294520C3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		2F3CB3FE72FF47CC86918DAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		34F11A92CAAD46E38E223B29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build;
+			};
+			name = Release;
+		};
+		5FCAAD5C33A848D5ACF7A521 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		601ABB1FA91A41E5870E21A8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/MinSizeRel;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",PROXSUITE_VECTORIZE,"$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/spectra/1.0.1/include,"/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0",/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Meshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/basic_opengl,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/TMeshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/freeglut,"$(inherited)");
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++17' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Registeration;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/opt/homebrew/anaconda3/include/eigen3,/opt/homebrew/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/Registeration.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		61713E1304DE48FF9122F6A1 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/RelWithDebInfo;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",PROXSUITE_VECTORIZE,"$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/spectra/1.0.1/include,"/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0",/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Meshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/basic_opengl,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/TMeshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/freeglut,"$(inherited)");
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++17' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Registeration;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/opt/homebrew/anaconda3/include/eigen3,/opt/homebrew/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/Registeration.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		63E54F834D9B463D922EFB04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Debug;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",PROXSUITE_VECTORIZE,"$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/spectra/1.0.1/include,"/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0",/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Meshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/basic_opengl,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/TMeshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/freeglut,"$(inherited)");
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++17' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Registeration;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/opt/homebrew/anaconda3/include/eigen3,/opt/homebrew/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/Registeration.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		6A0533129561453EBDCF997A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SYMROOT = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build;
+			};
+			name = Debug;
+		};
+		774CA1F7245E4F2696D0C5DE /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		7F11CA0BE3814BACA061E1E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Release;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",PROXSUITE_VECTORIZE,"$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/spectra/1.0.1/include,"/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0",/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/Meshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/basic_opengl,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/TMeshlib,/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/freeglut,"$(inherited)");
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++17' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Registeration;
+				SECTORDER_FLAGS = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/opt/homebrew/anaconda3/include/eigen3,/opt/homebrew/include,"$(inherited)");
+				TARGET_TEMP_DIR = "/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build/Registeration.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		A455976313CD4886968F3BDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		B96D5B48D1F04DDC9EB1D70F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D8A0F3B1132A46E486ABA28D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build;
+			};
+			name = RelWithDebInfo;
+		};
+		EA20B114536542DBB7E8226B /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		ED2802DEEB9E4FBD871EA12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		FA0E5B7A5FD743DBB211BCB5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/build;
+			};
+			name = MinSizeRel;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C2908D2C9CC44C3B4F9570F /* Build configuration list for PBXProject "Registeration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A0533129561453EBDCF997A /* Debug */,
+				34F11A92CAAD46E38E223B29 /* Release */,
+				FA0E5B7A5FD743DBB211BCB5 /* MinSizeRel */,
+				D8A0F3B1132A46E486ABA28D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		414E6977F40E4FE698883587 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3CB3FE72FF47CC86918DAF /* Debug */,
+				ED2802DEEB9E4FBD871EA12F /* Release */,
+				774CA1F7245E4F2696D0C5DE /* MinSizeRel */,
+				B96D5B48D1F04DDC9EB1D70F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9F16A8B5B6C74A8DAEA790E5 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A455976313CD4886968F3BDA /* Debug */,
+				22C1CAD49078468294520C3E /* Release */,
+				EA20B114536542DBB7E8226B /* MinSizeRel */,
+				5FCAAD5C33A848D5ACF7A521 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DDD5080156E3432DAAF90C25 /* Build configuration list for PBXNativeTarget "Registeration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63E54F834D9B463D922EFB04 /* Debug */,
+				7F11CA0BE3814BACA061E1E9 /* Release */,
+				601ABB1FA91A41E5870E21A8 /* MinSizeRel */,
+				61713E1304DE48FF9122F6A1 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE75C818B1824B43A192285E /* Project object */;
+}

@@ -10,8 +10,7 @@
 #include<Spectra/GenEigsSolver.h>
 #include<Spectra/MatOp/SparseGenMatProd.h>
 #include<Eigen/Eigen>
-#include <proxsuite/proxqp/dense/dense.hpp> // load the dense solver backend
-#include <proxsuite/proxqp/utils/random_qp_problems.hpp> // used for generating a random convex qp
+#include <proxsuite/proxqp/sparse/wrapper.hpp>
  
 using namespace proxsuite::proxqp;
 
@@ -71,7 +70,7 @@ namespace MeshLib
         Eigen::SparseMatrix<double> Omega;
         Eigen::SparseMatrix<double> V_Omega;
         
-        Eigen::SparseMatrix<double> compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> g);
+        Eigen::SparseMatrix<double> compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> l,Eigen::SparseMatrix<double> g);
  
         
         int Vertex_num;

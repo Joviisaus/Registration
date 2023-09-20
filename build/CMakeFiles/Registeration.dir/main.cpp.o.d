@@ -717,11 +717,10 @@ CMakeFiles/Registeration.dir/main.cpp.o: \
   /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
   /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/list \
-  /usr/local/include/proxsuite/proxqp/dense/dense.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/wrapper.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/solver.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/wrapper.hpp \
+  /usr/local/include/proxsuite/proxqp/results.hpp \
+  /usr/local/include/proxsuite/helpers/optional.hpp \
   /usr/local/include/proxsuite/fwd.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/views.hpp \
   /usr/local/include/proxsuite/linalg/veg/type_traits/core.hpp \
   /usr/local/include/proxsuite/linalg/veg/internal/typedefs.hpp \
   /usr/local/include/proxsuite/linalg/veg/internal/integer_seq.hpp \
@@ -730,36 +729,17 @@ CMakeFiles/Registeration.dir/main.cpp.o: \
   /usr/local/include/proxsuite/linalg/veg/internal/preprocessor.hpp \
   /usr/local/include/proxsuite/linalg/veg/internal/prologue.hpp \
   /usr/local/include/proxsuite/linalg/veg/internal/epilogue.hpp \
-  /usr/local/include/proxsuite/linalg/veg/util/dbg.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/dbg.hpp \
-  /usr/local/include/proxsuite/linalg/veg/type_traits/primitives.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/terminate.hpp \
-  /usr/local/include/proxsuite/linalg/veg/type_traits/constructible.hpp \
+  /usr/local/include/proxsuite/linalg/veg/vec.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/delete_special_members.hpp \
+  /usr/local/include/proxsuite/linalg/veg/memory/alloc.hpp \
   /usr/local/include/proxsuite/linalg/veg/ref.hpp \
   /usr/local/include/proxsuite/linalg/veg/type_traits/tags.hpp \
+  /usr/local/include/proxsuite/linalg/veg/type_traits/constructible.hpp \
   /usr/local/include/proxsuite/linalg/veg/memory/address.hpp \
   /usr/local/include/proxsuite/linalg/veg/internal/std.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/linesearch.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/model.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/fwd.hpp \
-  /usr/local/include/proxsuite/helpers/common.hpp \
-  /usr/local/include/proxsuite/config.hpp \
-  /usr/local/include/proxsuite/proxqp/sparse/model.hpp \
-  /usr/local/include/proxsuite/linalg/sparse/core.hpp \
-  /usr/local/include/proxsuite/linalg/veg/slice.hpp \
-  /usr/local/include/proxsuite/linalg/veg/util/assert.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/assert_impl.hpp \
-  /usr/local/include/proxsuite/linalg/veg/util/defer.hpp \
-  /usr/local/include/proxsuite/linalg/veg/type_traits/invocable.hpp \
-  /usr/local/include/proxsuite/linalg/veg/util/get.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/narrow.hpp \
-  /usr/local/include/proxsuite/linalg/veg/tuple.hpp \
   /usr/local/include/proxsuite/linalg/veg/type_traits/assignable.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/fix_index.hpp \
-  /usr/local/include/proxsuite/linalg/veg/memory/dynamic_stack.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/collection_algo.hpp \
-  /usr/local/include/proxsuite/linalg/veg/memory/alloc.hpp \
   /usr/local/include/proxsuite/linalg/veg/memory/placement.hpp \
+  /usr/local/include/proxsuite/linalg/veg/type_traits/invocable.hpp \
   /usr/local/include/proxsuite/linalg/veg/type_traits/alloc.hpp \
   /usr/local/include/proxsuite/linalg/veg/internal/has_asan.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityMacros.h \
@@ -821,30 +801,83 @@ CMakeFiles/Registeration.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/mach/dyld_kernel.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_fsid_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_fsobj_id_t.h \
-  /usr/local/include/proxsuite/proxqp/sparse/fwd.hpp \
-  /usr/local/include/proxsuite/linalg/veg/vec.hpp \
-  /usr/local/include/proxsuite/linalg/veg/internal/delete_special_members.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/collection_algo.hpp \
+  /usr/local/include/proxsuite/linalg/veg/util/defer.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/narrow.hpp \
+  /usr/local/include/proxsuite/linalg/veg/util/assert.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/assert_impl.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/dbg.hpp \
+  /usr/local/include/proxsuite/linalg/veg/type_traits/primitives.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/terminate.hpp \
+  /usr/local/include/proxsuite/helpers/common.hpp \
+  /usr/local/include/proxsuite/config.hpp \
+  /usr/local/include/proxsuite/linalg/veg/slice.hpp \
+  /usr/local/include/proxsuite/linalg/veg/util/get.hpp \
+  /usr/local/include/proxsuite/linalg/veg/tuple.hpp \
+  /usr/local/include/proxsuite/linalg/veg/internal/fix_index.hpp \
   /usr/local/include/proxsuite/linalg/veg/util/unreachable.hpp \
-  /usr/local/include/proxsuite/proxqp/results.hpp \
-  /usr/local/include/proxsuite/helpers/optional.hpp \
   /usr/local/include/proxsuite/proxqp/settings.hpp \
   /usr/local/include/proxsuite/proxqp/status.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/workspace.hpp \
-  /usr/local/include/proxsuite/linalg/dense/ldlt.hpp \
-  /usr/local/include/proxsuite/linalg/dense/factorize.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/fwd.hpp \
+  /usr/local/include/proxsuite/proxqp/dense/views.hpp \
+  /usr/local/include/proxsuite/linalg/veg/util/dbg.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/solver.hpp \
   /usr/local/include/proxsuite/linalg/dense/core.hpp \
-  /usr/local/include/proxsuite/linalg/dense/update.hpp \
-  /usr/local/include/proxsuite/linalg/dense/modify.hpp \
-  /usr/local/include/proxsuite/linalg/dense/solve.hpp \
+  /usr/local/include/proxsuite/linalg/veg/memory/dynamic_stack.hpp \
+  /opt/homebrew/include/simde/x86/avx2.h \
+  /opt/homebrew/include/simde/x86/avx.h \
+  /opt/homebrew/include/simde/x86/sse.h \
+  /opt/homebrew/include/simde/x86/mmx.h \
+  /opt/homebrew/include/simde/x86/../simde-common.h \
+  /opt/homebrew/include/simde/x86/../hedley.h \
+  /opt/homebrew/include/simde/x86/../simde-detect-clang.h \
+  /opt/homebrew/include/simde/x86/../simde-arch.h \
+  /opt/homebrew/include/simde/x86/../simde-features.h \
+  /opt/homebrew/include/simde/x86/../simde-diagnostic.h \
+  /opt/homebrew/include/simde/x86/../simde-math.h \
+  /opt/homebrew/include/simde/x86/../simde-constify.h \
+  /opt/homebrew/include/simde/x86/../simde-align.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/fenv.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/fenv.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cfenv \
+  /opt/homebrew/include/simde/x86/../check.h \
+  /opt/homebrew/include/simde/x86/../debug-trap.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include/arm_acle.h \
+  /opt/homebrew/include/simde/x86/sse4.2.h \
+  /opt/homebrew/include/simde/x86/sse4.1.h \
+  /opt/homebrew/include/simde/x86/ssse3.h \
+  /opt/homebrew/include/simde/x86/sse3.h \
+  /opt/homebrew/include/simde/x86/sse2.h \
+  /opt/homebrew/include/simde/x86/fma.h \
+  /usr/local/include/proxsuite/linalg/sparse/core.hpp \
+  /usr/local/include/proxsuite/linalg/sparse/factorize.hpp \
+  /usr/local/include/proxsuite/linalg/sparse/update.hpp \
+  /usr/local/include/proxsuite/linalg/sparse/rowmod.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/views.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/model.hpp \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/IterativeSolvers \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/../../Eigen/Sparse \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/../../Eigen/Jacobi \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/../../Eigen/Householder \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/../../Eigen/src/Core/util/DisableStupidWarnings.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/IterationController.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/../../../../Eigen/src/Core/util/NonMPL2.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/ConstrainedConjGrad.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/../../../../Eigen/Core \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/IncompleteLU.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/GMRES.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/DGMRES.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/../../../../Eigen/Eigenvalues \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/MINRES.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/src/IterativeSolvers/IDRS.h \
+  /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/eigen-3.4.0/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h \
+  /usr/local/include/proxsuite/proxqp/sparse/workspace.hpp \
   /usr/local/include/proxsuite/proxqp/timings.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/helpers.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/preconditioner/ruiz.hpp \
-  /usr/local/include/proxsuite/proxqp/dense/utils.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/utils.hpp \
   /usr/local/include/proxsuite/proxqp/utils/prints.hpp \
-  /usr/local/include/proxsuite/linalg/veg/util/dynstack_alloc.hpp \
-  /usr/local/include/proxsuite/proxqp/utils/random_qp_problems.hpp \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/random \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/numeric \
+  /usr/local/include/proxsuite/proxqp/sparse/preconditioner/ruiz.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/preconditioner/identity.hpp \
+  /usr/local/include/proxsuite/proxqp/sparse/helpers.hpp \
   /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/ToolMesh.h \
   /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/../MeshLib/Mesh/BaseMesh.h \
   /Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/../MeshLib/Mesh/../Geometry/Point.h \

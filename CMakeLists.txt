@@ -17,4 +17,4 @@ include_directories("freeglut")
 
 add_executable(Registeration main.cpp Getpoint.h CGetPoint.h MeshBuilder.h Tool.h ToolMesh.h CGetpoint.cpp Registeration.h Registeration.cpp)
 
-target_link_libraries(Registeration )
+target_link_libraries(Registeration PUBLIC proxsuite::proxsuite-vectorized)

@@ -384,6 +384,7 @@ void Surface<M>::Registeration(int K){
     for(int q = 0; q < K ; q++){
         EmBedding_N();
         std::vector<Eigen::Triplet<double>> tripletList;
+        std::vector<Eigen::Triplet<double>> tripletList_h;
         std::vector<Eigen::Triplet<double>> tripletList_n;
         //equation 16;
         Eigen::SparseMatrix<double> a;
@@ -430,24 +431,25 @@ void Surface<M>::Registeration(int K){
         
         tripletList.clear();
         tripletList_n.clear();
-        Eigen::SparseMatrix<double> h(2*(Vertex_num),1);
-        Eigen::SparseMatrix<double> g(2*(Vertex_num),Vertex_num);
+        tripletList_h.clear();
+        Eigen::SparseMatrix<double> h(Vertex_num,1);
+        Eigen::SparseMatrix<double> l(Vertex_num,1);
+        Eigen::SparseMatrix<double> g(Vertex_num,Vertex_num);
         for(int i = 0; i < Vertex_num; i++) {
             tripletList.emplace_back(i,0,V_Omega.coeff(i,0)+1);
-            tripletList_n.emplace_back(i,i,-1);
+            tripletList_h.emplace_back(i,0,V_Omega.coeff(i,0)-1);
+            tripletList_n.emplace_back(i,i,1);
+            
         }
-        for(int i = Vertex_num; i < 2*(Vertex_num); i++) {
-            tripletList.emplace_back(i,0,1-V_Omega.coeff(i-(Vertex_num),0));
-            tripletList_n.emplace_back(i,i-Vertex_num,1);
-        }
-        
+
+        l.setFromTriplets(tripletList_h.begin(),tripletList_h.end());
         h.setFromTriplets(tripletList.begin(), tripletList.end());
         g.setFromTriplets(tripletList_n.begin(), tripletList_n.end());
         
-        Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, g);
+        Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, l, g);
 
         V_Omega = V_Omega + vOmega/(K-q);
-        //std::cout<<V_Omega<<endl;
+        std::cout<<V_Omega<<endl;
         
         tripletList.clear();
         for(int i = 0; i < Vertex_num; i++) {
@@ -467,7 +469,7 @@ void Surface<M>::Registeration(int K){
 
 
 template<typename M>
-Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> g){
+Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Eigen::SparseMatrix<double> E_f,Eigen::SparseMatrix<double> a,Eigen::SparseMatrix<double> b,Eigen::SparseMatrix<double> h,Eigen::SparseMatrix<double> l,Eigen::SparseMatrix<double> g){
     
     std::vector<Eigen::Triplet<double>> tripletList;
 
@@ -477,35 +479,38 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     
 
     Eigen::VectorXd z_crowd(Vertex_num);
+    Eigen::VectorXd l_crowd(Vertex_num);
+    Eigen::VectorXd h_crowd(Vertex_num);
     Eigen::VectorXd b_crowd(k);
     
     for(int i = 0; i < Vertex_num ;i++)
     {
         z_crowd(i,0) = z.coeff(i,0);
+        l_crowd(i,0) = l.coeff(i,0);
+        h_crowd(i,0) = h.coeff(i,0);
     }
     for(int i = 0;i < k; i++)
     {
         b_crowd(i,0) = b.coeff(i,0);
     }
 
-    dense::QP<double> qp(Vertex_num, 0, k);
+    sparse::QP<double,int> qp(Vertex_num, 0, k);
 
     qp.settings.eps_abs = eps_abs;
     qp.settings.initial_guess = InitialGuessStatus::NO_INITIAL_GUESS;
     qp.settings.verbose = true;
 
-    qp.init(W_N, z, nullopt, nullopt, a, b, b);
-
+    qp.init(W_N, z_crowd, a, b_crowd, g, l_crowd, h_crowd);
     qp.solve();
 
-    std::cout << "primal residual: " << qp.results.info.pri_res << std::endl;
-    std::cout << "dual residual: " << qp.results.info.dua_res << std::endl;
-    std::cout << "total number of iteration: " << qp.results.info.iter
-            << std::endl;
-    std::cout << "setup timing " << qp.results.info.setup_time << " solve time "
-            << qp.results.info.solve_time << std::endl;
+//    std::cout << "primal residual: " << qp.results.info.pri_res << std::endl;
+//    std::cout << "dual residual: " << qp.results.info.dua_res << std::endl;
+//    std::cout << "total number of iteration: " << qp.results.info.iter
+//            << std::endl;
+//    std::cout << "setup timing " << qp.results.info.setup_time << " solve time "
+//            << qp.results.info.solve_time << std::endl;
     
-    Eigen::VectorXd QPSolution;
+    Eigen::VectorXd QPSolution = qp.results.x;
 
     for(int i = 0 ; i < Vertex_num; i ++){
         tripletList.emplace_back(i,0,QPSolution(i,0));
