@@ -234,7 +234,7 @@ void Surface<M>::EmBedding_N(){
     std::vector<Eigen::Triplet<double>> tripletList;
     std::vector<Eigen::Triplet<double>> tripletList_n;
     std::vector<Eigen::Triplet<double>> tripletList_e;
-    Spectra::SparseGenMatProd<double> op(Omega*L_N);
+    Spectra::SparseGenMatProd<double> op(Omega*L_N*Omega);
     Spectra::GenEigsSolver<Spectra::SparseGenMatProd<double>> eigs(op, k+1, 2*k+3);
     eigs.init();
     auto nconv = eigs.compute(Spectra::SortRule::SmallestReal);
@@ -391,16 +391,13 @@ void Surface<M>::Registeration(int K){
         Eigen::SparseMatrix<double> b;
         a.resize(k,Vertex_num);
         b.resize(k, 1);
-        //std::cout<<lambda_N<<endl;
-        //std::cout<<lambda_M<<endl;
-        //std::cout<<lambda_M-lambda_N<<endl;
 
         for(int i = 0; i < k;i++){
             for(int j = 0; j< Vertex_num; j++){
                 tripletList.emplace_back(i,j,f_N.coeff(j, i)*f_N.coeff(j, i)/S_N.coeff(j, j));
                 //tripletList.emplace_back(i,j,f_N.coeff(j, i)/S_N.coeff(j, j));
             }
-            tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/(q*lambda_N.coeff(i, 0)+(K-q)*lambda_M.coeff(i, 0)));
+            tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/(q*lambda_N.coeff(i, 0)/K+(K-q)*lambda_M.coeff(i, 0)/K));
         }
         
         a.setFromTriplets(tripletList.begin(), tripletList.end());
@@ -417,7 +414,8 @@ void Surface<M>::Registeration(int K){
             double num = 0;
             for(int j = 0; j< k ; j++)
             {
-                num += D_Sn.coeff(i, j)*D_Sn.coeff(i, j)*V_Omega.coeff(i,0)/SN;
+                //num += D_Sn.coeff(i, j)*D_Sn.coeff(i, j)*V_Omega.coeff(i,0)/SN;
+                num += D_Sn.coeff(i, j)*D_Sn.coeff(i, j)/SN;
             }
              
             tripletList.emplace_back(i,0,num);
@@ -427,7 +425,7 @@ void Surface<M>::Registeration(int K){
         
         
         Eigen::SparseMatrix<double> z =  W_N*V_Omega;
-        z += E_f;
+        z += 0.5*E_f;
         
         tripletList.clear();
         tripletList_n.clear();
@@ -447,9 +445,8 @@ void Surface<M>::Registeration(int K){
         g.setFromTriplets(tripletList_n.begin(), tripletList_n.end());
         
         Eigen::SparseMatrix<double> vOmega = compute(z, E_f, a, b, h, l, g);
-
+        
         V_Omega = V_Omega + vOmega/(K-q);
-        std::cout<<V_Omega<<endl;
         
         tripletList.clear();
         for(int i = 0; i < Vertex_num; i++) {
@@ -458,7 +455,6 @@ void Surface<M>::Registeration(int K){
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
         }
 
-        std::cout<<V_Omega<<endl;
         
     Reg_view();
     
@@ -473,8 +469,6 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     
     std::vector<Eigen::Triplet<double>> tripletList;
 
-    double eps_abs = 1e-9;
-
     Eigen::SparseMatrix<double> vOmega(Vertex_num,1);
     
 
@@ -482,6 +476,9 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     Eigen::VectorXd l_crowd(Vertex_num);
     Eigen::VectorXd h_crowd(Vertex_num);
     Eigen::VectorXd b_crowd(k);
+    Eigen::VectorXd QPSolution(Vertex_num);
+    
+    QPSolution.setZero();
     
     for(int i = 0; i < Vertex_num ;i++)
     {
@@ -495,12 +492,16 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
     }
 
     sparse::QP<double,int> qp(Vertex_num, k, Vertex_num);
-
-    qp.settings.eps_abs = eps_abs;
-    qp.settings.initial_guess = InitialGuessStatus::NO_INITIAL_GUESS;
+    qp.init(W_N, z_crowd, a, b_crowd, g, l_crowd, h_crowd);
+    qp.settings.eps_abs = 1e-06;
+    qp.settings.eps_rel = 1e-06;
+    qp.settings.eps_primal_inf = 1e-12;
+    qp.settings.eps_dual_inf = 1e-12;
+    qp.settings.max_iter = 100;
+    qp.settings.max_iter_in = 50;
+    qp.settings.initial_guess = InitialGuessStatus::EQUALITY_CONSTRAINED_INITIAL_GUESS;
     qp.settings.verbose = true;
 
-    qp.init(W_N, z_crowd, a, b_crowd, g, l_crowd, h_crowd);
     qp.solve();
 
 //    std::cout << "primal residual: " << qp.results.info.pri_res << std::endl;
@@ -510,7 +511,7 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
 //    std::cout << "setup timing " << qp.results.info.setup_time << " solve time "
 //            << qp.results.info.solve_time << std::endl;
     
-    Eigen::VectorXd QPSolution = qp.results.x;
+    QPSolution = qp.results.x;
 
     for(int i = 0 ; i < Vertex_num; i ++){
         tripletList.emplace_back(i,0,QPSolution(i,0));
@@ -581,9 +582,9 @@ template<typename M>
 void Surface<M>::Reg_view()
 {
     int i = 0;
-    for (typename M::MeshVertexIterator mv(m_pMesh_M); !mv.end(); mv++)
+    for (typename M::MeshVertexIterator mv(m_pMesh_N); !mv.end(); mv++)
     {
-        i++;
+        
         typename M::CVertex* pVertex = mv.value();
         if(Omega.coeff(i, i) > 1.1)
         {
@@ -599,6 +600,7 @@ void Surface<M>::Reg_view()
             pVertex->rgb()[1] = 0;
             pVertex->rgb()[2] = 0;
         }
+        i++;
     }
 }
 }
