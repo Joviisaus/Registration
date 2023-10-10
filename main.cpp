@@ -14,10 +14,9 @@ int main(int argc, char** argv)
 {
     CTMesh mesh_N;
     CTMesh mesh_M;
-    mesh_N.read_m("../Model/eight.m");
-    mesh_M.read_obj("../Model/eight_Reg.obj");
-    mesh_M.write_m("../Model/eight_Reg.m");
-    Surface<CTMesh> Surface(&mesh_N,&mesh_M,8);
+    mesh_N.read_obj("../Model/eight_Reg.obj");
+    mesh_M.read_m("../Model/eight.m");
+    Surface<CTMesh> Surface(&mesh_N,&mesh_M,5);
     Surface.buildLBM_N();
     Surface.buildLBM_M();
     cout << "LBM build finished" <<endl;

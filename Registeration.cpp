@@ -455,7 +455,6 @@ void Surface<M>::Registeration(int K){
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
         }
 
-        
     Reg_view();
     
 
@@ -493,10 +492,10 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
 
     sparse::QP<double,int> qp(Vertex_num, k, Vertex_num);
     qp.init(W_N, z_crowd, a, b_crowd, g, l_crowd, h_crowd);
-    qp.settings.eps_abs = 1e-06;
-    qp.settings.eps_rel = 1e-06;
-    qp.settings.eps_primal_inf = 1e-12;
-    qp.settings.eps_dual_inf = 1e-12;
+    qp.settings.eps_abs = 1e-03;
+    qp.settings.eps_rel = 1e-03;
+    qp.settings.eps_primal_inf = 1e-9;
+    qp.settings.eps_dual_inf = 1e-9;
     qp.settings.max_iter = 100;
     qp.settings.max_iter_in = 50;
     qp.settings.initial_guess = InitialGuessStatus::EQUALITY_CONSTRAINED_INITIAL_GUESS;
