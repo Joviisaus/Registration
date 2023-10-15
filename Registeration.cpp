@@ -234,7 +234,7 @@ void Surface<M>::EmBedding_N(){
     std::vector<Eigen::Triplet<double>> tripletList;
     std::vector<Eigen::Triplet<double>> tripletList_n;
     std::vector<Eigen::Triplet<double>> tripletList_e;
-    Spectra::SparseGenMatProd<double> op(Omega*L_N*Omega);
+    Spectra::SparseGenMatProd<double> op(Omega*L_N);
     Spectra::GenEigsSolver<Spectra::SparseGenMatProd<double>> eigs(op, k+1, 2*k+3);
     eigs.init();
     auto nconv = eigs.compute(Spectra::SortRule::SmallestReal);
@@ -397,7 +397,7 @@ void Surface<M>::Registeration(int K){
                 tripletList.emplace_back(i,j,f_N.coeff(j, i)*f_N.coeff(j, i)/S_N.coeff(j, j));
                 //tripletList.emplace_back(i,j,f_N.coeff(j, i)/S_N.coeff(j, j));
             }
-            tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/(q*lambda_N.coeff(i, 0)/K+(K-q)*lambda_M.coeff(i, 0)/K));
+            tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/((K-q)*lambda_N.coeff(i, 0)/K+q*lambda_M.coeff(i, 0)/K));
         }
         
         a.setFromTriplets(tripletList.begin(), tripletList.end());
@@ -492,12 +492,12 @@ Eigen::SparseMatrix<double> Surface<M>::compute(Eigen::SparseMatrix<double> z,Ei
 
     sparse::QP<double,int> qp(Vertex_num, k, Vertex_num);
     qp.init(W_N, z_crowd, a, b_crowd, g, l_crowd, h_crowd);
-    qp.settings.eps_abs = 1e-03;
-    qp.settings.eps_rel = 1e-03;
+    //qp.settings.eps_abs = 1e-03;
+    //qp.settings.eps_rel = 1e-03;
     qp.settings.eps_primal_inf = 1e-9;
     qp.settings.eps_dual_inf = 1e-9;
-    qp.settings.max_iter = 100;
-    qp.settings.max_iter_in = 50;
+    //qp.settings.max_iter = 100;
+    //qp.settings.max_iter_in = 50;
     qp.settings.initial_guess = InitialGuessStatus::EQUALITY_CONSTRAINED_INITIAL_GUESS;
     qp.settings.verbose = true;
 
