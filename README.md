@@ -12,8 +12,13 @@ A reappear of thr article :[Surface Registration with Eigenvalues and Eigenvecto
 
 ### usage
 
+required third-part library:
+
+[proxsuit](https://simple-robotics.github.io/proxsuite/),[spectra](https://github.com/yixuan/spectra), Meshlib(from Prof. GU)
+
 ```zsh 
 git clone https://github.com/VIISAUS00/Registration.git
+git switch prox
 cd Registration
 mkdir build
 cmake ..
@@ -36,15 +41,21 @@ make
 ###   Surface类重要方法及变量功能说明：  
 
 - Surface(M* pMesh_N,M* pMesh_M,int k):构造函数，输入三个变量，前两个代表需要被配准的两个流形，最后一个代表配准中利用前k个特征值进行配准。 
-
 - void buildLBM_N():对第一个流形构造 Laplace-Beltrami 矩阵，该方法中L_N,S_N,W_N会根据论文中的定义赋值。 
-
 - void buildLBM_M():对第二个流形构造 Laplace-Beltrami 矩阵，该方法中L_M,S_M,W_M会根据论文中的定义赋值。  
-
 - void EmBedding_N()：根据k计算前k个特征向量，根据论文中的定义，将利用特征向量和特征值计算出I_N;  
 - void EmBedding_M():根据k计算前k个特征向量，根据论文中的定义，将利用特征向量和特征值计算出I_M;  
 - void Registeration(int K);执行配准操作，进行K次迭代，每次迭代开始时会调用EmBedding_N()，根据compute所得结果迭代N的Laplace-Beltrami 矩阵特征值特征向量，随后将对compute进行下一步调用，每次迭代实现一次二次规划问题。  
-
 - void updateOMEGA(): 该步骤会通过Registeration被调用，将一个对角矩阵更新为具有位置对应信息的矩阵以实现配准效果。  
+- void compute()：实现二次规划,调用PROXSUIT库实现。
 
-- void compute()：实现二次规划，目前还在开发设计，难点在于处理大型稀疏矩阵，广泛使用的二次规划问题解决方法都涉及到参数矩阵求逆，而在此处稀疏大矩阵所求逆矩阵往往不可逆，因此需要重新查找可复用的计算方法并复现。  
+---
+
+输出：对角矩阵 Omega，左乘N曲面的拉普拉斯矩阵以对其其与M的前k个特征向量。
+
+require：本系统未提供利用拉普拉斯阵的曲面重建算法，有待后续开发
+
+
+
+
+
