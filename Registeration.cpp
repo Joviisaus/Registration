@@ -399,6 +399,7 @@ void Surface<M>::Registeration(int K){
                 //tripletList.emplace_back(i,j,f_N.coeff(j, i)/S_N.coeff(j, j));
             }
             tripletList_n.emplace_back(i,0,(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/(rate*lambda_N.coeff(i, 0)+(1-rate)*lambda_M.coeff(i, 0)));
+            //std::cout<<lambda_N.coeff(i,0) - lambda_M.coeff(i,0)<<" ";
         }
         
         a.setFromTriplets(tripletList.begin(), tripletList.end());
@@ -456,6 +457,7 @@ void Surface<M>::Registeration(int K){
         }
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
         //for(int i = 0; i < Vertex_num; i++) std::cout<<V_Omega.coeff(i,0)<<endl;
+        //for(int i = 0; i < Vertex_num; i++) std::cout<<vOmega.coeff(i,0)<<endl;
         }
     //for(int i = 0; i < Vertex_num ; i++) std::cout<<V_Omega.coeff(i,0)<<endl;
 
