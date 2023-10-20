@@ -1,3 +1,0 @@
-/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeFiles/Registeration.dir
-/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeFiles/ALL_BUILD.dir
-/Users/jingouyang/Personal/Courseware/Surface_Registeration/zzzlib/Registeration/CMakeFiles/ZERO_CHECK.dir

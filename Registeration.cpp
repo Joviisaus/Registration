@@ -397,7 +397,7 @@ void Surface<M>::Registeration(int K){
                 tripletList.emplace_back(i,j,f_N.coeff(j, i)*f_N.coeff(j, i)/S_N.coeff(j, j));
                 //tripletList.emplace_back(i,j,f_N.coeff(j, i)/S_N.coeff(j, j));
             }
-            tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/((K-q)*lambda_N.coeff(i, 0)/K+q*lambda_M.coeff(i, 0)/K));
+            tripletList_n.emplace_back(i,0,K*(lambda_N.coeff(i, 0)-lambda_M.coeff(i, 0))/(q*lambda_N.coeff(i, 0)/K+(K-q)*lambda_M.coeff(i, 0)/K));
         }
         
         a.setFromTriplets(tripletList.begin(), tripletList.end());
@@ -434,8 +434,8 @@ void Surface<M>::Registeration(int K){
         Eigen::SparseMatrix<double> l(Vertex_num,1);
         Eigen::SparseMatrix<double> g(Vertex_num,Vertex_num);
         for(int i = 0; i < Vertex_num; i++) {
-            tripletList.emplace_back(i,0,V_Omega.coeff(i,0)+1);
-            tripletList_h.emplace_back(i,0,V_Omega.coeff(i,0)-1);
+            tripletList.emplace_back(i,0,1-V_Omega.coeff(i,0));
+            tripletList_h.emplace_back(i,0,-1+V_Omega.coeff(i,0)-1);
             tripletList_n.emplace_back(i,i,1);
             
         }
@@ -454,6 +454,7 @@ void Surface<M>::Registeration(int K){
         }
         Omega.setFromTriplets(tripletList.begin(), tripletList.end());
         }
+    for(int i = 0; i < Vertex_num ; i++) std::cout<<V_Omega.coeff(i,0)<<endl;
 
     Reg_view();
     
