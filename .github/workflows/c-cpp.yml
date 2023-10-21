@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "prox" ]
+  pull_request:
+    branches: [ "prox" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make build
+      run: mkdir build
+    - name: into build
+      run: cd build
+    - name: cmake
+      run: cmake ..
+    - name: make
+      run: make
+    - name: Registeration
+      run: ./Registeration
+
+
