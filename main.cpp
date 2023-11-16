@@ -21,11 +21,10 @@ int main(int argc, char** argv)
     Surface.buildLBM_M();
     cout << "LBM build finished" <<endl;
     Surface.Registeration(8);
-    Surface.Reg_view();
+    Surface.Reg_view();  
     mesh_N.write_m("../Model/eight_osqp.m");
     cout << "finished !!! press any key to continue!!!" << endl;
-    getchar();
-    
+    getchar();  
     return 0;
 
 }
